@@ -169,35 +169,18 @@
         <div class="sidebar-header">
             <img src="logo.png" alt="Logo" class="sidebar-logo" onerror="this.style.display='none'">
             <h3>Paulomon's Charting Trainer</h3>
-            <p>University of Cabuyao</p>
+            <p>College of Health and Allied Sciences</p>
         </div>
-        <a href="#" onclick="showTab('tab-patient-data')">📄 Patient Data (Case)</a>
-        <a href="#" onclick="showTab('tab-admission')">📝 Admission & Discharge</a>
-        <a href="#" onclick="showTab('tab-lab')">🔬 Laboratory Request</a>
-        <a href="#" onclick="showTab('tab-kardex')">📋 Kardex</a>
+        <a href="#" onclick="showTab('tab-admission')">Admission & Discharge</a>
+        <a href="#" onclick="showTab('tab-lab')">Laboratory Request</a>
+        <a href="#" onclick="showTab('tab-kardex')">Kardex</a>
     </div>
 
     <div id="main-content">
         <button class="openbtn no-print" onclick="toggleNav()">☰ Open Menu</button>
 
-        <div id="tab-patient-data" class="container tab-content active">
-            <h2>Patient Data (Read Only)</h2>
-            <div class="patient-case">
-                <p><strong>Patient Profile:</strong> Aling Ana Makaspak Mondragon, a 65-year-old female widow, residing at # 45 Brgy. Mamatid, Cabuyao Laguna. She was born on December 25, 1957, in Camarines Norte, and is currently working as a storekeeper in Mamatid Multigrains Store. She is a Catholic.</p>
-                
-                <p><strong>History of Present Illness:</strong> The patient went to the Emergency department due to the following complaints: dizziness, headache, nauseated and somewhat disoriented.</p>
-                
-                <p><strong>Initial Assessment & Vitals:</strong> Nurse Marla did the initial assessment with the following vital signs: Temp - 36.8°C, RR - 22, PR - 95 and BP of 190/110 mmHg. She was referred and examined by Dr. Dimasalang, the ROD on deck, and was given a 2nd dose of Catapres 75mcg SL. After an hour, her blood pressure remained elevated and she was advised to be admitted.</p>
 
-                <p><strong>Admission Details:</strong> She was admitted on March 28, 2023, at 3:30 AM under Dr. Aurea Dimagiba as her attending physician. Her Hospital Number is 4105460 and PhilHealth Number is 230328. She was accompanied by her niece, Athena Mondragon (CP # 099991234567).</p>
-
-                <p><strong>Initial Orders:</strong> Admitting diagnosis of T/C HPN stage 2, uncontrolled. Initial orders include IVF: D5 LRS 1 liter to run for 12 hrs, Lipid profile, Uric Acid, BUN, FBS, CREA, NA and K with 10 to 12 hours fasting. Admit to ward, or room of choice. Low fat, low salt diet.</p>
-
-                <p><strong>Discharge Details:</strong> Final diagnosis: HPN stage 2, uncontrolled and DM Type 2. Date of discharge: April 3, 2023 at 4:30 PM.</p>
-            </div>
-        </div>
-
-        <div id="tab-admission" class="container tab-content">
+        <div id="tab-admission" class="container tab-content active">
             <h2>Admission and Discharge Record</h2>
             
             <div class="form-row">
@@ -391,8 +374,91 @@
         </script>
 
         <div id="tab-kardex" class="container tab-content">
-            <h2>Kardex</h2>
-            <p><em>We will build the Medication, Diet, and Vital Signs tracking form here.</em></p>
+            <h2 style="margin-bottom: 5px;">Kardex</h2>
+            <p style="text-align: center; font-weight: bold; margin-top: 0; margin-bottom: 20px;">PHILHEALTH ACCREDITED</p>
+
+            <div style="border: 2px solid #000; padding: 15px; margin-bottom: 15px;">
+                <div class="form-row">
+                    <div class="form-group" style="flex: 3;"><label>NAME</label><input type="text" name="kar_name"></div>
+                    <div class="form-group"><label>AGE</label><input type="number" name="kar_age"></div>
+                    <div class="form-group"><label>GENDER</label><input type="text" name="kar_gender"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 3;"><label>ADDRESS</label><input type="text" name="kar_address"></div>
+                    <div class="form-group"><label>BIRTHDATE</label><input type="date" name="kar_birthdate"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>DATE/TIME OF ADMISSION</label><input type="datetime-local" name="kar_admission" style="font-family: Arial;"></div>
+                    <div class="form-group"><label>HOSPITAL No.</label><input type="text" name="kar_hospital_no"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 2;"><label>CHIEF COMPLAINT</label><input type="text" name="kar_cc"></div>
+                    <div class="form-group"><label>PHILHEALTH No.</label><input type="text" name="kar_phic"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 2;"><label>DIAGNOSIS</label><input type="text" name="kar_diagnosis"></div>
+                    <div class="form-group" style="flex: 2;"><label>ATTENDING PHYSICIAN</label><input type="text" name="kar_physician"></div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="border: 1px solid #000; padding: 10px;">
+                        <label>VITAL SIGNS</label>
+                        <textarea style="width: 100%; height: 80px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 10px; flex-grow: 1;">
+                        <label>MEDICATION</label>
+                        <textarea style="width: 100%; height: 200px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 10px;">
+                        <label>SPECIAL NOTES/ENDORSEMENT</label>
+                        <textarea style="width: 100%; height: 100px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="border: 1px solid #000; padding: 10px;">
+                        <label>IVF</label>
+                        <textarea style="width: 100%; height: 40px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                        
+                        <label style="margin-top: 10px; display: block;">SIDE DRIP:</label>
+                        <textarea style="width: 100%; height: 40px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                        
+                        <label style="margin-top: 10px; display: block;">IVF TO FOLLOW:</label>
+                        <textarea style="width: 100%; height: 40px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 10px;">
+                        <label>LABORATORY</label>
+                        <textarea style="width: 100%; height: 50px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 10px;">
+                        <label>DIAGNOSTIC PROCEDURE</label>
+                        <textarea style="width: 100%; height: 50px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div style="border: 1px solid #000; padding: 10px;">
+                            <label>CONTRAPTION</label>
+                            <textarea style="width: 100%; height: 50px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                        </div>
+                        <div style="border: 1px solid #000; padding: 10px;">
+                            <label>DIET</label>
+                            <textarea style="width: 100%; height: 50px; box-sizing: border-box; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row" style="border: 2px solid #000; padding: 15px;">
+                <div class="form-group"><label>WARD</label><input type="text" name="kar_ward"></div>
+                <div class="form-group"><label>ROOM</label><input type="text" name="kar_room"></div>
+                <div class="form-group" style="flex: 2;"><label>NURSE ON DUTY</label><input type="text" name="kar_nurse"></div>
+            </div>
+
+            <div class="print-btn no-print">
+                <button onclick="window.print()">Print Form for Checking</button>
+            </div>
         </div>
 
     </div>
