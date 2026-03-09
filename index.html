@@ -41,20 +41,13 @@
             border-bottom: 2px solid #34495e;
         }
 
-        /* Logo Placeholder */
-        .logo-placeholder {
-            font-size: 50px;
-            margin-bottom: 10px;
-
-        }
-
         /* Sidebar Logo Styling */
         .sidebar-logo {
-            width: 100px; 
+            width: 100px; /* Adjust this to make your logo bigger or smaller */
             height: auto;
             margin-bottom: 15px;
-            background-color: white; 
-            padding: 5px; 
+            background-color: white;
+            padding: 5px;
         }
 
         .sidebar-header h3 {
@@ -62,6 +55,12 @@
             font-size: 20px;
             color: #ecf0f1;
             letter-spacing: 1px;
+        }
+        
+        .sidebar-header p {
+            margin: 5px 0 0 0;
+            font-size: 12px;
+            color: #95a5a6;
         }
 
         .sidebar a {
@@ -134,7 +133,7 @@
             display: block;
         }
 
-        /* Form Internal Styling (from previous step) */
+        /* Form Internal Styling */
         h2 { text-align: center; text-transform: uppercase; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
         .form-row { display: flex; flex-wrap: wrap; margin-bottom: 15px; gap: 15px; }
         .form-group { flex: 1; display: flex; flex-direction: column; min-width: 150px; }
@@ -143,6 +142,11 @@
         input[type="text"], input[type="date"], input[type="time"], input[type="number"], select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
         .section-title { background-color: #e9ecef; padding: 8px; font-weight: bold; margin-top: 25px; margin-bottom: 15px; font-size: 14px; }
         
+        /* Patient Data specific styling */
+        .patient-case { line-height: 1.6; font-size: 15px; color: #444; }
+        .patient-case p { margin-bottom: 15px; }
+        .patient-case strong { color: #2c3e50; }
+
         .print-btn { text-align: center; margin-top: 30px; }
         .print-btn button { padding: 10px 20px; background-color: #0056b3; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
         .print-btn button:hover { background-color: #004494; }
@@ -163,8 +167,9 @@
     <div id="mySidebar" class="sidebar no-print">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
         <div class="sidebar-header">
-            <img src="kexploit.png" class="sidebar-logo">
+            <img src="logo.png" alt="Logo" class="sidebar-logo" onerror="this.style.display='none'">
             <h3>Paulomon's Charting Trainer</h3>
+            <p>University of Cabuyao</p>
         </div>
         <a href="#" onclick="showTab('tab-patient-data')">📄 Patient Data (Case)</a>
         <a href="#" onclick="showTab('tab-admission')">📝 Admission & Discharge</a>
@@ -177,51 +182,213 @@
 
         <div id="tab-patient-data" class="container tab-content active">
             <h2>Patient Data (Read Only)</h2>
-            <p><em>The case study details for Aling Ana Makaspak Mondragon will go here for students to reference while charting.</em></p>
+            <div class="patient-case">
+                <p><strong>Patient Profile:</strong> Aling Ana Makaspak Mondragon, a 65-year-old female widow, residing at # 45 Brgy. Mamatid, Cabuyao Laguna. She was born on December 25, 1957, in Camarines Norte, and is currently working as a storekeeper in Mamatid Multigrains Store. She is a Catholic.</p>
+                
+                <p><strong>History of Present Illness:</strong> The patient went to the Emergency department due to the following complaints: dizziness, headache, nauseated and somewhat disoriented.</p>
+                
+                <p><strong>Initial Assessment & Vitals:</strong> Nurse Marla did the initial assessment with the following vital signs: Temp - 36.8°C, RR - 22, PR - 95 and BP of 190/110 mmHg. She was referred and examined by Dr. Dimasalang, the ROD on deck, and was given a 2nd dose of Catapres 75mcg SL. After an hour, her blood pressure remained elevated and she was advised to be admitted.</p>
+
+                <p><strong>Admission Details:</strong> She was admitted on March 28, 2023, at 3:30 AM under Dr. Aurea Dimagiba as her attending physician. Her Hospital Number is 4105460 and PhilHealth Number is 230328. She was accompanied by her niece, Athena Mondragon (CP # 099991234567).</p>
+
+                <p><strong>Initial Orders:</strong> Admitting diagnosis of T/C HPN stage 2, uncontrolled. Initial orders include IVF: D5 LRS 1 liter to run for 12 hrs, Lipid profile, Uric Acid, BUN, FBS, CREA, NA and K with 10 to 12 hours fasting. Admit to ward, or room of choice. Low fat, low salt diet.</p>
+
+                <p><strong>Discharge Details:</strong> Final diagnosis: HPN stage 2, uncontrolled and DM Type 2. Date of discharge: April 3, 2023 at 4:30 PM.</p>
+            </div>
         </div>
 
         <div id="tab-admission" class="container tab-content">
             <h2>Admission and Discharge Record</h2>
+            
             <div class="form-row">
                 <div class="form-group"><label>Room and Bed No.</label><input type="text" name="room_bed"></div>
                 <div class="form-group"><label>PHIC No.</label><input type="text" name="phic_no"></div>
             </div>
+
             <div class="section-title">PATIENT INFORMATION</div>
             <div class="form-row">
                 <div class="form-group"><label>Surname</label><input type="text" name="surname"></div>
                 <div class="form-group"><label>First Name</label><input type="text" name="first_name"></div>
                 <div class="form-group"><label>Middle Name</label><input type="text" name="middle_name"></div>
             </div>
+
             <div class="form-row">
-                <div class="form-group" style="flex: 2;"><label>Permanent Address</label><input type="text" name="perm_address"></div>
+                <div class="form-group" style="flex: 2;"><label>Permanent Address (House Number)</label><input type="text" name="perm_house"></div>
                 <div class="form-group"><label>Barangay</label><input type="text" name="perm_brgy"></div>
-                <div class="form-group"><label>City/Municipality</label><input type="text" name="perm_city"></div>
+                <div class="form-group"><label>Municipality/City</label><input type="text" name="perm_city"></div>
                 <div class="form-group"><label>Province</label><input type="text" name="perm_province"></div>
+                <div class="form-group" style="min-width: 80px;"><label>Zip Code</label><input type="text" name="perm_zip"></div>
             </div>
+
+            <div class="form-row">
+                <div class="form-group" style="flex: 2;"><label>Provincial Address (House Number)</label><input type="text" name="prov_house"></div>
+                <div class="form-group"><label>Barangay</label><input type="text" name="prov_brgy"></div>
+                <div class="form-group"><label>Municipality/City</label><input type="text" name="prov_city"></div>
+                <div class="form-group"><label>Province</label><input type="text" name="prov_province"></div>
+                <div class="form-group" style="min-width: 80px;"><label>Zip Code</label><input type="text" name="prov_zip"></div>
+            </div>
+
             <div class="form-row">
                 <div class="form-group" style="min-width: 80px;"><label>Age</label><input type="number" name="age"></div>
                 <div class="form-group"><label>Sex</label><select name="sex"><option value=""></option><option value="Male">Male</option><option value="Female">Female</option></select></div>
                 <div class="form-group"><label>Civil Status</label><select name="civil_status"><option value=""></option><option value="Single">Single</option><option value="Married">Married</option><option value="Widower/Widow">Widower/Widow</option><option value="Separated">Separated</option></select></div>
+                <div class="form-group"><label>Nationality</label><input type="text" name="nationality" value="Filipino"></div>
                 <div class="form-group"><label>Religion</label><input type="text" name="religion"></div>
             </div>
+
+            <div class="form-row">
+                <div class="form-group"><label>Date of Birth</label><input type="date" name="dob"></div>
+                <div class="form-group"><label>Place of Birth</label><input type="text" name="pob"></div>
+            </div>
+
+            <div class="section-title">EMPLOYMENT DETAILS</div>
+            <div class="form-row">
+                <div class="form-group"><label>Occupation</label><input type="text" name="occupation"></div>
+                <div class="form-group"><label>Present Employer</label><input type="text" name="employer"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group" style="flex: 2;"><label>Employer's Address</label><input type="text" name="employer_address"></div>
+                <div class="form-group"><label>Landline/Mobile Number</label><input type="text" name="employer_contact"></div>
+            </div>
+
+            <div class="section-title">CONTACTS & RELATIVES</div>
+            <div class="form-row">
+                <div class="form-group"><label>Name of Nearest Relative</label><input type="text" name="nearest_relative"></div>
+                <div class="form-group"><label>Relationship</label><input type="text" name="relative_relationship"></div>
+                <div class="form-group"><label>Landline/Mobile Number</label><input type="text" name="relative_contact"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group full-width"><label>Address</label><input type="text" name="relative_address" style="width: 100%; box-sizing: border-box;"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Name of Spouse</label><input type="text" name="spouse_name"></div>
+                <div class="form-group"><label>Landline/Mobile Number</label><input type="text" name="spouse_contact"></div>
+                <div class="form-group"><label>Occupation</label><input type="text" name="spouse_occupation"></div>
+            </div>
+
             <div class="section-title">HOSPITALIZATION DETAILS</div>
             <div class="form-row">
                 <div class="form-group"><label>Admission Date</label><input type="date" name="admission_date"></div>
                 <div class="form-group"><label>Time</label><input type="time" name="admission_time"></div>
+                <div class="form-group"><label>Discharge Date</label><input type="date" name="discharge_date"></div>
+                <div class="form-group"><label>Time</label><input type="time" name="discharge_time"></div>
+                <div class="form-group" style="min-width: 80px;"><label>Total Number of days</label><input type="number" name="total_days"></div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group"><label>Type of Admission</label><input type="text" name="type_of_admission"></div>
                 <div class="form-group"><label>Attending Physician/s</label><input type="text" name="attending_physician"></div>
             </div>
+
+            <div class="section-title">INFORMANT</div>
+            <div class="form-row">
+                <div class="form-group"><label>First Name</label><input type="text" name="informant_first"></div>
+                <div class="form-group"><label>Middle Name</label><input type="text" name="informant_middle"></div>
+                <div class="form-group"><label>Surname</label><input type="text" name="informant_surname"></div>
+            </div>
+
+            <div class="section-title">DIAGNOSIS & PERSONNEL</div>
             <div class="form-row">
                 <div class="form-group full-width"><label>Admitting Diagnosis</label><input type="text" name="admitting_diagnosis" style="width: 100%; box-sizing: border-box;"></div>
             </div>
+            <div class="form-row">
+                <div class="form-group full-width"><label>Final Diagnosis</label><input type="text" name="final_diagnosis" style="width: 100%; box-sizing: border-box;"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Admitting Physician/ROD</label><input type="text" name="admitting_physician"></div>
+                <div class="form-group"><label>Admitting Nurse</label><input type="text" name="admitting_nurse"></div>
+            </div>
+
             <div class="print-btn no-print">
-                <button onclick="window.print()">🖨️ Print Form for Checking</button>
+                <button onclick="window.print()">Print Form for Checking</button>
             </div>
         </div>
 
         <div id="tab-lab" class="container tab-content">
             <h2>Laboratory Request Record</h2>
-            <p><em>We will build the checkboxes for CBC, HGT, BUN, BUA, etc. here next.</em></p>
+
+            <div class="section-title">PATIENT INFORMATION</div>
+            <div class="form-row">
+                <div class="form-group"><label>Last Name</label><input type="text" name="lab_last_name"></div>
+                <div class="form-group"><label>First Name</label><input type="text" name="lab_first_name"></div>
+                <div class="form-group"><label>Middle Name</label><input type="text" name="lab_middle_name"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group" style="flex: 2;"><label>Street #</label><input type="text" name="lab_street"></div>
+                <div class="form-group"><label>Barangay</label><input type="text" name="lab_brgy"></div>
+                <div class="form-group"><label>City/Municipality</label><input type="text" name="lab_city"></div>
+            </div>
+
+            <div class="section-title">LABORATORY TESTS</div>
+            <p class="no-print" style="font-size: 13px; color: #555; margin-bottom: 15px;"><em>Check the requested tests and fill in the corresponding date and requesting physician. Use the "+ Add Test" button for unlisted tests.</em></p>
+
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 14px;">
+                <thead>
+                    <tr style="background-color: #e9ecef; text-align: left;">
+                        <th style="padding: 10px; border: 1px solid #000; width: 35%;">Kind of Tests</th>
+                        <th style="padding: 10px; border: 1px solid #000; width: 20%;">Date</th>
+                        <th style="padding: 10px; border: 1px solid #000; width: 45%;">Requesting Physician</th>
+                    </tr>
+                </thead>
+                <tbody id="lab-tests-body">
+                    <script>
+                        const tests = [
+                            "CBC", "HGT", "BUN", "BUA", "CREA", 
+                            "LIPID PROFILE", "ALT", "AST", "TOTAL CHOLESTEROL", 
+                            "TRIGLYCERIDES", "NA", "K", "CALCIUM", "FBS"
+                        ];
+                        
+                        tests.forEach(test => {
+                            document.write(`
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #000;">
+                                        <label style="display: flex; align-items: center; cursor: pointer; margin: 0; font-weight: normal; font-size: 14px;">
+                                            <input type="checkbox" style="margin-right: 10px; width: 16px; height: 16px;"> ${test}
+                                        </label>
+                                    </td>
+                                    <td style="padding: 0; border: 1px solid #000;">
+                                        <input type="date" style="width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;">
+                                    </td>
+                                    <td style="padding: 0; border: 1px solid #000;">
+                                        <input type="text" style="width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;">
+                                    </td>
+                                </tr>
+                            `);
+                        });
+                    </script>
+                </tbody>
+            </table>
+
+            <div class="no-print" style="text-align: right; margin-bottom: 20px;">
+                <button type="button" onclick="addCustomTest()" style="background-color: #28a745; padding: 6px 15px; font-size: 14px;">➕ Add Test</button>
+            </div>
+
+            <div class="print-btn no-print">
+                <button onclick="window.print()">Print Form for Checking</button>
+            </div>
         </div>
+
+        <script>
+            function addCustomTest() {
+                const tbody = document.getElementById('lab-tests-body');
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="padding: 8px; border: 1px solid #000;">
+                        <label style="display: flex; align-items: center; cursor: pointer; margin: 0; font-weight: normal; font-size: 14px;">
+                            <input type="checkbox" style="margin-right: 10px; width: 16px; height: 16px;" checked>
+                            <input type="text" placeholder="Type test name here..." style="border: none; border-bottom: 1px dashed #ccc; background: transparent; font-size: 14px; width: 100%; outline: none; padding: 2px;">
+                        </label>
+                    </td>
+                    <td style="padding: 0; border: 1px solid #000;">
+                        <input type="date" style="width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;">
+                    </td>
+                    <td style="padding: 0; border: 1px solid #000;">
+                        <input type="text" style="width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;">
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            }
+        </script>
 
         <div id="tab-kardex" class="container tab-content">
             <h2>Kardex</h2>
