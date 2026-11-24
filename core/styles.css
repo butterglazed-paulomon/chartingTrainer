@@ -1,0 +1,52 @@
+.ct-root { font-family: Arial, sans-serif; color: #333; }
+.ct-root * { box-sizing: border-box; }
+.ct-root .ct-case { background: #fff8e1; border-left: 4px solid #f0ad4e; padding: 12px 16px; margin: 0 auto 15px; max-width: 900px; line-height: 1.6; font-size: 15px; white-space: pre-wrap; }
+.ct-root .ct-nav { display: flex; flex-wrap: wrap; gap: 6px; max-width: 900px; margin: 0 auto 15px; }
+.ct-root .ct-nav button { background: #2c3e50; color: #fff; border: none; border-radius: 4px; padding: 10px 15px; font-size: 14px; cursor: pointer; }
+.ct-root .ct-nav button:hover, .ct-root .ct-nav button.active { background: #3498db; }
+.ct-root .ct-tab { display: none; max-width: 900px; margin: 0 auto; background: #fff; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+.ct-root .ct-tab.active { display: block; }
+.ct-root h2 { text-align: center; text-transform: uppercase; border-bottom: 2px solid #000; padding-bottom: 10px; margin: 0 0 20px; }
+.ct-root .ct-row { display: flex; flex-wrap: wrap; margin-bottom: 15px; gap: 15px; }
+.ct-root .ct-row.ct-bordered { border: 2px solid #000; padding: 15px; }
+.ct-root .ct-group { flex: 1; display: flex; flex-direction: column; min-width: 150px; }
+.ct-root .ct-group.ct-full { flex: 100%; }
+.ct-root label { font-weight: bold; font-size: 12px; margin-bottom: 4px; color: #333; }
+.ct-root input[type="text"], .ct-root input[type="date"], .ct-root input[type="time"], .ct-root input[type="number"], .ct-root input[type="datetime-local"], .ct-root select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+.ct-root .ct-section-title { background: #e9ecef; padding: 8px; font-weight: bold; margin: 25px 0 15px; font-size: 14px; }
+.ct-root .ct-subtitle { text-align: center; font-weight: bold; margin-bottom: 15px; }
+.ct-root .ct-hint { font-size: 13px; color: #555; margin-bottom: 15px; font-style: italic; }
+.ct-root table.ct-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 14px; }
+.ct-root .ct-table th { padding: 10px; border: 1px solid #000; background: #e9ecef; text-align: left; }
+.ct-root .ct-table td { padding: 0; border: 1px solid #000; }
+.ct-root .ct-table td.ct-test { padding: 8px; }
+.ct-root .ct-test label { display: flex; align-items: center; cursor: pointer; margin: 0; font-weight: normal; font-size: 14px; }
+.ct-root .ct-test input[type="checkbox"] { margin-right: 10px; width: 16px; height: 16px; }
+.ct-root .ct-table td input[type="text"], .ct-root .ct-table td input[type="date"] { width: 100%; border: none; padding: 8px; background: transparent; border-radius: 0; }
+.ct-root .ct-boxes { border: 2px solid #000; padding: 15px; margin-bottom: 15px; display: grid; gap: 15px; }
+.ct-root .ct-panel { display: flex; flex-direction: column; gap: 15px; }
+.ct-root .ct-split { display: flex; gap: 15px; }
+.ct-root .ct-split > .ct-box { flex: 1; }
+.ct-root .ct-box { border: 1px solid #000; padding: 10px; display: flex; flex-direction: column; }
+.ct-root .ct-box.ct-grow { flex-grow: 1; }
+.ct-root .ct-box textarea { width: 100%; resize: vertical; border: none; outline: none; font-family: Arial; font-size: 14px; background: transparent; }
+.ct-root .ct-print-mirror { display: none; white-space: pre-wrap; font-size: 14px; }
+.ct-root .ct-actions { text-align: center; margin-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto; }
+.ct-root .ct-actions button, .ct-root .ct-add { padding: 10px 20px; background: #0056b3; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 0 5px; }
+.ct-root .ct-add { background: #28a745; padding: 6px 15px; font-size: 14px; margin: 0 0 20px; }
+.ct-root .ct-actions button:hover { background: #004494; }
+.ct-root .ct-fb { font-size: 12px; margin-top: 4px; padding: 3px 6px; border-radius: 3px; background: #eef; }
+.ct-root .ct-fb.correct { background: #d4edda; }
+.ct-root .ct-fb.wrong { background: #f8d7da; }
+.ct-root .ct-fb.partial, .ct-root .ct-fb.needs_review { background: #fff3cd; }
+.ct-root .ct-archived { max-width: 900px; margin: 15px auto; background: #fff; padding: 15px 30px; border: 1px dashed #999; }
+.ct-root .ct-archived h3 { margin: 0 0 10px; font-size: 14px; }
+.ct-root .ct-score { max-width: 900px; margin: 0 auto 15px; background: #e7f3ff; padding: 10px 16px; font-weight: bold; }
+@media print {
+  .ct-root .ct-nav, .ct-root .ct-actions, .ct-root .ct-no-print, .ct-root .ct-add, .ct-root .ct-fb, .ct-root .ct-score { display: none !important; }
+  .ct-root .ct-tab { display: block !important; box-shadow: none; max-width: 100%; padding: 0; page-break-after: always; }
+  .ct-root input, .ct-root select { border: none !important; border-bottom: 1px solid #000 !important; border-radius: 0; padding: 4px 0; appearance: none; }
+  .ct-root .ct-section-title { background: transparent; border-bottom: 1px solid #000; }
+  .ct-root .ct-box textarea { display: none; }
+  .ct-root .ct-print-mirror { display: block; }
+}

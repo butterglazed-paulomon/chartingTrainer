@@ -176,7 +176,8 @@
         <a href="#" onclick="showTab('tab-kardex')">Kardex</a>
     </div>
 
-    <div id="main-content">
+    <div id="ct-fallback"></div>
+    <div id="main-content" hidden>
         <button class="openbtn no-print" onclick="toggleNav()">☰ Open Menu</button>
 
 
@@ -315,28 +316,20 @@
                 </thead>
                 <tbody id="lab-tests-body">
                     <script>
-                        const tests = [
-                            "CBC", "HGT", "BUN", "BUA", "CREA", 
-                            "LIPID PROFILE", "ALT", "AST", "TOTAL CHOLESTEROL", 
-                            "TRIGLYCERIDES", "NA", "K", "CALCIUM", "FBS"
-                        ];
-                        
+                        const tests = ["CBC", "HGT", "BUN", "BUA", "CREA", "LIPID PROFILE", "ALT", "AST", "TOTAL CHOLESTEROL", "TRIGLYCERIDES", "NA", "K", "CALCIUM", "FBS"];
+                        const tbody = document.currentScript.parentElement;
                         tests.forEach(test => {
-                            document.write(`
-                                <tr>
-                                    <td style="padding: 8px; border: 1px solid #000;">
-                                        <label style="display: flex; align-items: center; cursor: pointer; margin: 0; font-weight: normal; font-size: 14px;">
-                                            <input type="checkbox" style="margin-right: 10px; width: 16px; height: 16px;"> ${test}
-                                        </label>
-                                    </td>
-                                    <td style="padding: 0; border: 1px solid #000;">
-                                        <input type="date" style="width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;">
-                                    </td>
-                                    <td style="padding: 0; border: 1px solid #000;">
-                                        <input type="text" style="width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;">
-                                    </td>
-                                </tr>
-                            `);
+                            const tr = document.createElement('tr');
+                            const td = (child) => { const e = document.createElement('td'); e.style.cssText = 'padding: 0; border: 1px solid #000;'; e.appendChild(child); return e; };
+                            const chk = document.createElement('input'); chk.type = 'checkbox'; chk.style.cssText = 'margin-right: 10px; width: 16px; height: 16px;';
+                            const label = document.createElement('label'); label.style.cssText = 'display: flex; align-items: center; cursor: pointer; margin: 0; font-weight: normal; font-size: 14px;';
+                            label.append(chk, document.createTextNode(' ' + test));
+                            const date = document.createElement('input'); date.type = 'date';
+                            const phys = document.createElement('input'); phys.type = 'text';
+                            for (const inp of [date, phys]) inp.style.cssText = 'width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;';
+                            const first = td(label); first.style.padding = '8px';
+                            tr.append(first, td(date), td(phys));
+                            tbody.appendChild(tr);
                         });
                     </script>
                 </tbody>
@@ -355,20 +348,16 @@
             function addCustomTest() {
                 const tbody = document.getElementById('lab-tests-body');
                 const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td style="padding: 8px; border: 1px solid #000;">
-                        <label style="display: flex; align-items: center; cursor: pointer; margin: 0; font-weight: normal; font-size: 14px;">
-                            <input type="checkbox" style="margin-right: 10px; width: 16px; height: 16px;" checked>
-                            <input type="text" placeholder="Type test name here..." style="border: none; border-bottom: 1px dashed #ccc; background: transparent; font-size: 14px; width: 100%; outline: none; padding: 2px;">
-                        </label>
-                    </td>
-                    <td style="padding: 0; border: 1px solid #000;">
-                        <input type="date" style="width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;">
-                    </td>
-                    <td style="padding: 0; border: 1px solid #000;">
-                        <input type="text" style="width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;">
-                    </td>
-                `;
+                const td = (child) => { const e = document.createElement('td'); e.style.cssText = 'padding: 0; border: 1px solid #000;'; e.appendChild(child); return e; };
+                const chk = document.createElement('input'); chk.type = 'checkbox'; chk.checked = true; chk.style.cssText = 'margin-right: 10px; width: 16px; height: 16px;';
+                const name = document.createElement('input'); name.type = 'text'; name.placeholder = 'Type test name here...'; name.style.cssText = 'border: none; border-bottom: 1px dashed #ccc; background: transparent; font-size: 14px; width: 100%; outline: none; padding: 2px;';
+                const label = document.createElement('label'); label.style.cssText = 'display: flex; align-items: center; cursor: pointer; margin: 0; font-weight: normal; font-size: 14px;';
+                label.append(chk, name);
+                const date = document.createElement('input'); date.type = 'date';
+                const phys = document.createElement('input'); phys.type = 'text';
+                for (const inp of [date, phys]) inp.style.cssText = 'width: 100%; height: 100%; box-sizing: border-box; border: none; padding: 8px; background: transparent; border-radius: 0;';
+                const first = td(label); first.style.padding = '8px';
+                tr.append(first, td(date), td(phys));
                 tbody.appendChild(tr);
             }
         </script>
@@ -463,6 +452,18 @@
 
     </div>
 
+    <link rel="stylesheet" href="./core/styles.css">
+    <script type="module">
+        import { mountChartingModule, createDefaultTemplate } from "./core/index.js";
+        const fallback = document.getElementById("ct-fallback");
+        if (fallback) {
+            mountChartingModule(fallback, {
+                template: createDefaultTemplate(),
+                onSaveDraft: () => {},
+                onSubmit: () => alert("This is the offline copy. Run `npm start` for saving, faculty editing, and grading."),
+            });
+        }
+    </script>
     <script>
         // Sidebar Toggle Logic
         function toggleNav() {
